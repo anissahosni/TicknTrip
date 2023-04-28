@@ -1,70 +1,122 @@
-/* Navbar */
+/* Style de la navbar */
 .navbar {
-  background-color: #000;
-  color: #fff;
-  padding: 10px;
+  background-color: black;
+  color: white;
   display: flex;
   justify-content: center;
+  align-items: center;
+  padding: 1rem;
 }
 
 .navbar-logo {
   font-size: 2rem;
+  font-weight: bold;
 }
 
-/* Main section */
+/* Style de la section principale */
 .main-section {
   background-color: #f9f8f7;
-  height: 500px;
-  position: relative;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
+  padding: 2rem;
 }
 
-.main-section-overlay {
-  background-image: url("https://example.com/background-image.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  position: absolute;
-  top: 0;
-  left: 0;
+.text-with-image {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
   width: 100%;
-  height: 100%;
-  opacity: 0.4;
 }
 
-.main-section-content {
-  text-align: center;
+.text-with-image-text {
+  max-width: 50%;
+  margin-right: 2rem;
 }
 
-.main-section-content h1 {
+.text-with-image-text h1 {
   font-size: 3rem;
+  margin-bottom: 1rem;
 }
 
-.main-section-content p {
+.text-with-image-text p {
   font-size: 1.5rem;
-  margin-bottom: 20px;
+  margin-bottom: 1.5rem;
 }
 
-.trips-section {
-  padding: 1rem 2rem;
+.text-with-image-image img {
+  max-width: 40%;
+  height: auto;
 }
 
 .btn {
-  background-color: #000;
-  color: #fff;
-  padding: 10px 20px;
-  font-size: 1.2rem;
+  background-color: white;
+  padding: auto;
+  color: white;
   border: none;
+  padding: 1rem 2rem;
+  font-size: 1.5rem;
+  font-weight: bold;
   cursor: pointer;
+  margin-top: 2rem;
 }
 
-.btn:hover {
-  background-color: #444;
+/* Style de la checklist */
+.checkbox-row {
+  display: flex;
+  padding: auto;
+  align-items: center;
+  margin: 0.5rem 0;
 }
-.tick {
-  font-family: Covered By Your Grace;
+
+mat-checkbox {
+  margin-right: 1rem;
+  margin-bottom: 0.5rem;
 }
-.trip {
-  font-family: Covered By Your Grace;
+
+/* Pour les écrans de taille maximale de 600px */
+@media screen and (max-width: 600px) {
+  .navbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60px;
+  }
+
+  .navbar-logo {
+    font-size: 1.5rem;
+  }
+
+  .text-with-image {
+    flex-direction: column-reverse;
+  }
+
+  .text-with-image-text {
+    text-align: center;
+  }
+
+  .text-with-image-image {
+    text-align: center;
+  }
+
+  .main-section-content {
+    padding: 20px;
+  }
+
+  .checkbox-row {
+    display: flex;
+    align-items: center;
+  }
+
+  .btn {
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+  mat-checkbox {
+    margin-right: 1rem;
+    margin-bottom: 0.5rem;
+  }
 }

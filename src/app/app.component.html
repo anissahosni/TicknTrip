@@ -1,43 +1,45 @@
 <nav class="navbar">
   <div class="navbar-logo">Tickntrip</div>
 </nav>
-
-<h1>{{ pageTitle }}</h1>
 <section class="main-section">
-  <div class="main-section-overlay"></div>
   <div class="main-section-content">
-    <h1 class="tick">Hello</h1>
-    <p class="trip">Commencer mon aventure !</p>
-  </div>
-</section>
-
-<section class="trips-section">
-  <div *ngFor="let trip of trips">
-    <div>
-      <b>{{ trip.city }} - Du {{ trip.startDate }} au {{ trip.endDate }}</b>
+    <div class="text-with-image">
+      <div class="text-with-image-text">
+        <h1>Bienvenue sur Tickntrip</h1>
+        <p>Commencer l'aventure maintenant !</p>
+      </div>
+      <div class="text-with-image-image">
+        <img src="assets/tickntrip.png" alt="Tickntrip logo" />
+      </div>
     </div>
-    <button *ngIf="!trip.items"
-      mat-raised-button
-      color="primary"
-      (click)="prepareSuitcase(trip)"
-      [disabled]="trip.checked"
-    >
-      Préparer ma valise
-    </button>
 
-    <mat-accordion *ngIf="trip.items?.length">
-      <mat-expansion-panel>
-        <mat-expansion-panel-header>
-          <mat-panel-title>
-            <h4>Checklist valise</h4>
-          </mat-panel-title>
-        </mat-expansion-panel-header>
-        <div class="checkbox-row" *ngFor="let item of trip.items; let i = index">
-          <mat-checkbox [value]="item.name">{{ item.name }}</mat-checkbox>
-        </div>
-      </mat-expansion-panel>
-    </mat-accordion>
-
+    <div *ngFor="let trip of trips">
+      <div>
+        <b>{{ trip.city }} - Du {{ trip.startDate }} au {{ trip.endDate }}</b>
+      </div>
+      <button
+        mat-raised-button
+        color="black"
+        (click)="prepareSuitcase(trip)"
+        [disabled]="trip.checked"
+      >
+        Préparer ma valise
+      </button>
+      <mat-accordion *ngIf="trip.items?.length">
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <h4>Checklist valise</h4>
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <div
+            class="checkbox-row"
+            *ngFor="let item of trip.items; let i = index"
+          >
+            <mat-checkbox [value]="item.name">{{ item.name }}</mat-checkbox>
+          </div>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </div>
   </div>
 </section>
-
