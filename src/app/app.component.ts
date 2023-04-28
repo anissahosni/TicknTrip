@@ -16,7 +16,8 @@ export class AppComponent {
       endDate: '2023-05-25',
       city: 'Lisbon',
       checked: false,
-      items: []
+      items: [],
+      loading: false
     },
     {
       startDate: '2023-07-01',
@@ -24,14 +25,16 @@ export class AppComponent {
       city: 'New York',
       checked: false,
       items: [{ name: 'Chemises/Blouses (3)', checked: false }, { name: 'Pantalons/Shorts (2)', checked: false }, { name: 'Robes/Jupes (2)', checked: false }, { name: 'Pulls/Gilets (2)', checked: false }, { name: 'Veste légère (1)', checked: false }, { name: 'Maillots de bain (2)', checked: false }, { name: 'Sous-vêtements (suffisamment pour la durée du voyage)', checked: false }, { name: 'Chaussettes (suffisamment pour la durée du voyage)', checked: false }, { name: 'Chaussures confortables pour la marche (1 paire)', checked: false }, { name: 'Chaussures de soirée (1 paire)', checked: false }, { name: 'Sandales/Tongs (1 paire)', checked: false }, { name: 'Chapeau/casquette', checked: false }
-      ]
+      ],
+      loading: false
     },
     {
       startDate: '2023-07-22',
       endDate: '2023-07-29',
       city: 'Paris',
       checked: false,
-      items: []
+      items: [],
+      loading: false
     }
   ];
 
@@ -40,6 +43,7 @@ export class AppComponent {
   prepareSuitcase(index: any, trip: { startDate: any; endDate: any; city: any }) {
     const url = `http://localhost:8082/valise/generate`;
     const body = { departureDate: trip.startDate, arrivalDate: trip.endDate, location: trip.city };
+    this.trips[index].loading = true;
     this.http.post(url, body).subscribe(
       (response: any) => {
         console.log('RESPONSE: ', response)
@@ -48,6 +52,7 @@ export class AppComponent {
         items.map((item: any) => {name: item; checked: false});
 
         this.trips[index].items = items;
+        this.trips[index].loading = false;
 
         console.log('this.trips: ', this.trips);
       },

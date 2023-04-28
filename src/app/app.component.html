@@ -17,9 +17,8 @@
       <div style="margin: 2rem 0;">
         <b>&bull; {{ trip.city }} - Du {{ trip.startDate }} au {{ trip.endDate }}</b>
       </div>
-      <div style="display: flex; justify-content: center;">
+      <div style="display: flex; justify-content: center;" *ngIf="!trip.items.length">
         <button
-        *ngIf="!trip.items.length"
           mat-raised-button
           color="black"
           (click)="prepareSuitcase(idx, trip)"
@@ -27,6 +26,9 @@
         >
           Préparer ma valise
         </button>
+        <div *ngIf="trip.loading === true">
+          <mat-spinner diameter="30"></mat-spinner>
+        </div>
       </div>
       <mat-accordion *ngIf="trip.items?.length">
         <mat-expansion-panel>
