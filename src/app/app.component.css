@@ -1,4 +1,60 @@
-.checkbox-row {
+/* Navbar */
+.navbar {
+  background-color: #000;
+  color: #fff;
+  padding: 10px;
   display: flex;
+  justify-content: center;
+}
+
+.navbar-logo {
+  font-size: 2rem;
+}
+
+/* Main section */
+.main-section {
+  background-color: #f9f8f7;
+  height: 500px;
+  position: relative;
+  display: flex;
+  justify-content: center;
   align-items: center;
+}
+
+.main-section-overlay {
+  background-image: url("https://example.com/background-image.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.4;
+}
+
+.main-section-content {
+  text-align: center;
+}
+
+.main-section-content h1 {
+  font-size: 3rem;
+}
+
+.main-section-content p {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+
+.btn {
+  background-color: #000;
+  color: #fff;
+  padding: 10px 20px;
+  font-size: 1.2rem;
+  border: none;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #444;
 }

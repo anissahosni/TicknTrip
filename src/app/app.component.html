@@ -1,13 +1,29 @@
+<nav class="navbar">
+  <div class="navbar-logo">Tickntrip</div>
+</nav>
+
 <h1>{{ pageTitle }}</h1>
+<section class="main-section">
+  <div class="main-section-overlay"></div>
+  <div class="main-section-content">
+    <h1>Bienvenue sur Tickntrip</h1>
+    <p>Planifiez votre prochain voyage dès maintenant</p>
+  </div>
+</section>
 
 <div *ngFor="let trip of trips">
   <div>
     <b>{{ trip.city }} - Du {{ trip.startDate }} au {{ trip.endDate }}</b>
   </div>
-  <button mat-raised-button color="primary" (click)="prepareSuitcase(trip)" [disabled]="trip.checked">
+  <button
+    mat-raised-button
+    color="primary"
+    (click)="prepareSuitcase(trip)"
+    [disabled]="trip.checked"
+  >
     Préparer ma valise
   </button>
-  <!-- <app-suitcase [items]="trip.items"></app-suitcase> -->
+
   <div>
     <h4>Checklist valise</h4>
     <div class="checkbox-row" *ngFor="let item of trip.items; let i = index">
