@@ -1,14 +1,17 @@
-<div *ngFor="let trip of trips">
-  <div><b>{{ trip.city }} - {{ trip.startDate }} to {{ trip.endDate }}</b></div>
-  <button (click)="prepareSuitcase(trip)" [disabled]="trip.checked">Prepare suitcase</button>
-  <!-- <app-suitcase [items]="trip.items"></app-suitcase> -->
-  <div> <h2>Checklist valises</h2>
-    <form>
-      <div *ngFor="let item of trip.items; let i = index">
-        <input type="checkbox" id="{{'item-' + (i + 1)}}" [value]="item.name">
-         <label for="{{'item-' + (i + 1)}}">{{ item.name }}</label>
-        </div>
-       </form>
-      </div>
-</div>
+<h1>{{ pageTitle }}</h1>
 
+<div *ngFor="let trip of trips">
+  <div>
+    <b>{{ trip.city }} - Du {{ trip.startDate }} au {{ trip.endDate }}</b>
+  </div>
+  <button mat-raised-button color="primary" (click)="prepareSuitcase(trip)" [disabled]="trip.checked">
+    Préparer ma valise
+  </button>
+  <!-- <app-suitcase [items]="trip.items"></app-suitcase> -->
+  <div>
+    <h4>Checklist valise</h4>
+    <div class="checkbox-row" *ngFor="let item of trip.items; let i = index">
+      <mat-checkbox [value]="item.name">{{ item.name }}</mat-checkbox>
+    </div>
+  </div>
+</div>
