@@ -14,17 +14,20 @@
     </div>
 
     <div *ngFor="let trip of trips">
-      <div>
+      <div style="margin: 2rem 0;">
         <b>{{ trip.city }} - Du {{ trip.startDate }} au {{ trip.endDate }}</b>
       </div>
-      <button
-        mat-raised-button
-        color="black"
-        (click)="prepareSuitcase(trip)"
-        [disabled]="trip.checked"
-      >
-        Préparer ma valise
-      </button>
+      <div style="display: flex; justify-content: center;">
+        <button
+        *ngIf="!trip.items.length"
+          mat-raised-button
+          color="black"
+          (click)="prepareSuitcase(trip)"
+          [disabled]="trip.checked"
+        >
+          Préparer ma valise
+        </button>
+      </div>
       <mat-accordion *ngIf="trip.items?.length">
         <mat-expansion-panel>
           <mat-expansion-panel-header>
