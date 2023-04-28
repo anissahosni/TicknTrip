@@ -13,7 +13,7 @@
       </div>
     </div>
 
-    <div *ngFor="let trip of trips">
+    <div *ngFor="let trip of trips; let idx = index">
       <div style="margin: 2rem 0;">
         <b>&bull; {{ trip.city }} - Du {{ trip.startDate }} au {{ trip.endDate }}</b>
       </div>
@@ -22,7 +22,7 @@
         *ngIf="!trip.items.length"
           mat-raised-button
           color="black"
-          (click)="prepareSuitcase(trip)"
+          (click)="prepareSuitcase(idx, trip)"
           [disabled]="trip.checked"
         >
           Préparer ma valise

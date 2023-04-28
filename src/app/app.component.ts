@@ -37,16 +37,19 @@ export class AppComponent {
 
   constructor(private http: HttpClient) {}
 
-  prepareSuitcase(trip: { startDate: any; endDate: any; city: any }) {
-    const url = `/generate`;
+  prepareSuitcase(index: any, trip: { startDate: any; endDate: any; city: any }) {
+    const url = `http://localhost:8082/valise/generate`;
     const body = { departureDate: trip.startDate, arrivalDate: trip.endDate, location: trip.city };
     this.http.post(url, body).subscribe(
-      (response) => {
+      (response: any) => {
         console.log('RESPONSE: ', response)
-        // const items = response.items;
-        // items.forEach(item => {
-        //   item.checked = false;
-        // });
+        const items = response;
+
+        items.map((item: any) => {name: item; checked: false});
+
+        this.trips[index].items = items;
+
+        console.log('this.trips: ', this.trips);
       },
       (error) => {
         console.log(error);
