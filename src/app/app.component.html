@@ -11,23 +11,33 @@
   </div>
 </section>
 
-<div *ngFor="let trip of trips">
-  <div>
-    <b>{{ trip.city }} - Du {{ trip.startDate }} au {{ trip.endDate }}</b>
-  </div>
-  <button
-    mat-raised-button
-    color="primary"
-    (click)="prepareSuitcase(trip)"
-    [disabled]="trip.checked"
-  >
-    Préparer ma valise
-  </button>
-
-  <div>
-    <h4>Checklist valise</h4>
-    <div class="checkbox-row" *ngFor="let item of trip.items; let i = index">
-      <mat-checkbox [value]="item.name">{{ item.name }}</mat-checkbox>
+<section class="trips-section">
+  <div *ngFor="let trip of trips">
+    <div>
+      <b>{{ trip.city }} - Du {{ trip.startDate }} au {{ trip.endDate }}</b>
     </div>
+    <button *ngIf="!trip.items"
+      mat-raised-button
+      color="primary"
+      (click)="prepareSuitcase(trip)"
+      [disabled]="trip.checked"
+    >
+      Préparer ma valise
+    </button>
+
+    <mat-accordion *ngIf="trip.items?.length">
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <h4>Checklist valise</h4>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <div class="checkbox-row" *ngFor="let item of trip.items; let i = index">
+          <mat-checkbox [value]="item.name">{{ item.name }}</mat-checkbox>
+        </div>
+      </mat-expansion-panel>
+    </mat-accordion>
+
   </div>
-</div>
+</section>
+

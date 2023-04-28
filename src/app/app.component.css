@@ -46,6 +46,10 @@
   margin-bottom: 20px;
 }
 
+.trips-section {
+  padding: 1rem 2rem;
+}
+
 .btn {
   background-color: #000;
   color: #fff;
